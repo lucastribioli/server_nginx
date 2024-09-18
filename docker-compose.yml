@@ -1,0 +1,18 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./servers:/etc/nginx/servers:ro
+      - ./minha_pasta:/app/minha_pasta
+      - ./minha_pasta2:/app/minha_pasta2
+      - .logs:/var/log/nginx
+    networks:
+      - webnet
+
+networks:
+  webnet:
